@@ -10,23 +10,42 @@ namespace LogoKaresz
         /* Függvények */
 
 
-        void BILLENTYU(double lepeskoz, float tollmeret)
+        void BILLENTYU(double lepeskoz, float tollmeret, int sorszam)
         {
             Tollvastagság(tollmeret);
             Tollszín(Color.Black);
 
-            Előre(lepeskoz * 10); //fehér bal oldala
-            Jobbra(90); Előre(lepeskoz *2 ); //fehér felső oldala
-            Jobbra(90); Előre(lepeskoz * 2); //fekete billentyű felett
-            Tollvastagság(tollmeret * 10); // vastag fekete billentyű
-            Jobbra(90); Előre(lepeskoz * 5); //fekete billentyű
-            Tollvastagság(tollmeret);
-            Előre(lepeskoz * 3); // fekete alatti fehér jobb oldala
-            Jobbra(90); Előre(lepeskoz);//fehér alja vissza a kezdőpontig
+
+            if ((sorszam != 3) && (sorszam != 7)) //FEKETE BILLENTYŰVEL
+            {
+                Előre(lepeskoz * 10); //fehér bal oldala
+                Jobbra(90); Előre(lepeskoz*2); //fehér felső oldala
+                Jobbra(90); //fekete billentyű kezdete
+                Tollvastagság(tollmeret * 15); // vastag fekete billentyű
+                Előre(lepeskoz * 7); //fekete billentyű
+                Tollvastagság(tollmeret);
+                Előre(lepeskoz * 3); // fekete alatti fehér jobb oldala
+                Jobbra(90); Előre(lepeskoz * 2);//fehér alja vissza a kezdőpontig
+
+                Fordulj(180);
+                Előre(lepeskoz * 2);
+                Balra(90); //következő billentyűzet kezdőpontja
+            }
+
+            else // FEHÉR BILLENYTŰVEL
+            {
+                Előre(lepeskoz * 10); //fehér bal oldala
+                Jobbra(90); Előre(lepeskoz * 2); //fehér felső oldala
+                Jobbra(90); //fehér bal kezdete
+                Előre(lepeskoz * 10); // fehér jobb oldala
+                Jobbra(90); Előre(lepeskoz * 2);//fehér alja vissza a kezdőpontig
+
+                Fordulj(180);
+                Előre(lepeskoz * 2);
+                Balra(90); //következő billentyűzet kezdőpontja            
+            }
             
-            Fordulj(180);
-            Előre(lepeskoz * 2);
-            Balra(90); //következő billentyűzet kezdőpontja
+            
         }
         
 
@@ -36,14 +55,14 @@ namespace LogoKaresz
         {
             double lepeskoz = 10; //alakzat oldalának hossza
             float tolvastagsag = 1;
-            int alakzatszama = 28;// egy sorban mennyi legyen
+            int bill_szama = 28;// egy sorban mennyi legyen
             
             Teleport(közép.X-300, közép.Y+100, észak); //kurzor elhelyezése induláskor
 
-            for (int i = 1; i <= alakzatszama; i++)
+            for (int i = 1; i <= bill_szama; i++)
             {
-                BILLENTYU(lepeskoz, tolvastagsag);
-                //SORKITOLTO(lepeskoz, alakzatszama);
+                int sorszam = i;
+                BILLENTYU(lepeskoz, tolvastagsag, sorszam);
             }
 
         }
