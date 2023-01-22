@@ -9,12 +9,10 @@ namespace LogoKaresz
     {
         /* Függvények */
 
-
         void BILLENTYU(double lepeskoz, float tollmeret, int sorszam)
         {
             Tollvastagság(tollmeret);
             Tollszín(Color.Black);
-
 
             if ((sorszam != 3) && (sorszam != 7)) //FEKETE BILLENTYŰVEL
             {
@@ -44,25 +42,26 @@ namespace LogoKaresz
                 Előre(lepeskoz * 2);
                 Balra(90); //következő billentyűzet kezdőpontja            
             }
-            
-            
         }
-        
-
 
         /* Függvények vége */
         void FELADAT()
         {
             double lepeskoz = 10; //alakzat oldalának hossza
             float tolvastagsag = 1;
-            int bill_szama = 28;// egy sorban mennyi legyen
+            int bill_szama = 7;// egy sorban mennyi legyen
+            int ismetles = 4;
             
             Teleport(közép.X-300, közép.Y+100, észak); //kurzor elhelyezése induláskor
 
-            for (int i = 1; i <= bill_szama; i++)
+            for (int j =1;j<=4;j++) // a 7 billentyű ismétlése
             {
-                int sorszam = i;
-                BILLENTYU(lepeskoz, tolvastagsag, sorszam);
+                for (int i = 1; i <= bill_szama; i++) // a 7 billentyű rajzolása
+                {
+                    int sorszam = i;
+                    BILLENTYU(lepeskoz, tolvastagsag, sorszam);
+                }
+
             }
 
         }
