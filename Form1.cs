@@ -54,7 +54,7 @@ namespace LogoKaresz
             
             Teleport(közép.X-300, közép.Y+100, észak); //kurzor elhelyezése induláskor
 
-            for (int j =1;j<=4;j++) // a 7 billentyű ismétlése
+            for (int j =1;j<=ismetles;j++) // a 7 billentyű ismétlése
             {
                 for (int i = 1; i <= bill_szama; i++) // a 7 billentyű rajzolása
                 {
